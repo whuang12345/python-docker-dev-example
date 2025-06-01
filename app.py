@@ -1,13 +1,13 @@
 from fastapi import FastAPI
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 from config import settings
-
+from typing import Optional  # Add this import
 
 class Hero(SQLModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
+    id: Optional[int] = Field(default=None, primary_key=True)
     name: str = Field(index=True)
     secret_name: str
-    age: int | None = Field(default=None, index=True)
+    age: Optional[int] = Field(default=None, index=True)
 
 
 engine = create_engine(str(settings.SQLALCHEMY_DATABASE_URI))
