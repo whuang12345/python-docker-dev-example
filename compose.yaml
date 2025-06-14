@@ -31,6 +31,10 @@ services:
       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
     secrets:
       - db-password
+    develop:
+      watch:
+        - action: rebuild
+          path: .
 
   db:
     image: postgres
